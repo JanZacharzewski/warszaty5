@@ -1,10 +1,7 @@
 package pl.coderslab.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.domain.Book;
 import pl.coderslab.service.BookService;
 
@@ -36,6 +33,10 @@ public class BookController {
     @RequestMapping("")
     public List<Book> findAll() {
         return service.findAll();
+    }
+    @RequestMapping("/{id}")
+    public Book findById(@PathVariable long id) {
+        return service.findById(id);
     }
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public Book create(@RequestBody Book book) {
